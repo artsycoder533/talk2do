@@ -87,15 +87,18 @@ body.dark {
 }
 
 .todos__container {
-    height: 100%;
+    /* /* height: 100%; */
     width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
     border: 2px solid orange;
-    
 }
 
 .todos__input {
-    width: 80%;
+    width: 90%;
     padding: 0.25rem;
+    
 }
 
 .todo__add {
@@ -106,6 +109,11 @@ body.dark {
     background: blue;
     color: white;
     border: 2px solid white;
+}
+
+.todos__list {
+    border: 2px solid blue;
+    height: 100%;
 }
 
 .talk__container {
