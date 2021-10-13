@@ -5,7 +5,8 @@
 }
 
 body {
-    
+    background: rgb(245, 240, 240);
+    color: rgb(27, 27, 27);
 }
 
 body.dark {
@@ -80,7 +81,7 @@ body.dark {
 
 .todos {
     height: calc(100vh - 50px);
-    border: 2px solid yellow;
+    /* border: 2px solid yellow; */
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -91,17 +92,23 @@ body.dark {
     width: 100%;
     padding: 1rem;
     display: flex;
-    justify-content: center;
-    border: 2px solid orange;
+    justify-content: space-between;
+    /* border: 2px solid orange; */
 }
 
 .todos__input {
     width: 90%;
     padding: 0.25rem;
-    
+    border: none;
+
 }
 
-.todo__add {
+.todos__input.dark {
+    background: black;
+    color: snow;
+}
+
+.todos__add {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -112,8 +119,48 @@ body.dark {
 }
 
 .todos__list {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     height: 100%;
+    width: 90vw;
+    max-width: 500px;
+    margin: auto;
+}
+
+.todos__item {
+    display: flex;
+    /* border: 2px solid pink; */
+    margin: 1rem 0;
+    border-radius: 8px;
+    background: white;
+}
+
+.todos__item.dark {
+    background: black;
+    color: snow;
+}
+
+.todos__text {
+    padding: 0.5rem;
+}
+
+.todos__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100px;
+}
+
+.todos__icons {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.fa-edit {
+    color: green;
+}
+
+.fa-trash-alt {
+    color: red;
 }
 
 .talk__container {

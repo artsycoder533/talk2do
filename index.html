@@ -14,7 +14,7 @@
     <header class="header">
         <nav class="header__container">
             <h1 class="header__brand">Talk2Do</h1>
-            <button class="todo__add btn"><i class="fas fa-plus"></i></button>
+            
             <div class="header__toggle">
                 <input type="checkbox" class="header__checkbox" id="checkbox">
                 <label for="checkbox" class="header__label">
@@ -26,12 +26,19 @@
     </header>
 
     <section class="todos">
-        <section class="todos__container">
+        <article class="todos__container">
             <input type="text" name="text" id="text" class ="todos__input">
-        </section>
-        <section class="todos__list">
-            
-        </section>
+            <button class="todos__add btn"><i class="fas fa-plus"></i></button>
+        </article>
+        <article class="todos__list">
+            <div class="todos__item">
+                <p class="todos__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, accusantium?</p>
+                <div class="todos__buttons">
+                    <i class="fas fa-edit todos__icons"></i>
+                    <i class="far fa-trash-alt todos__icons"></i>
+                </div>
+            </div>
+        </article>
         <section class="talk__container">
             <button class="talk btn"><i class="fas fa-microphone"></i></button>
         </section>
