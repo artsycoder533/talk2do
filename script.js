@@ -19,6 +19,13 @@ function createElementWithClass(type, className) {
     return element;
 }
 
+function createTextElementWithClass(type, className, text) {
+    const element = document.createElement(type);
+    element.classList.add(className);
+    element.textContent = text;
+    return element;
+}
+
 
 
 checkbox.addEventListener("click", () => {
