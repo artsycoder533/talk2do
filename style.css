@@ -156,7 +156,7 @@ body.dark {
 }
 
 .todos__priority {
-    background: rgb(167, 47, 47);
+    background: red;
     color: white;
     border-radius: 8px;
     display: inline-block;
