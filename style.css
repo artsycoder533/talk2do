@@ -27,6 +27,7 @@ body.dark {
     margin: auto;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .header__toggle {
@@ -85,8 +86,30 @@ body.dark {
     justify-content: flex-end;
 }
 
+.todos__container {
+    height: 100%;
+    width: 100%;
+    border: 2px solid orange;
+    
+}
+
+.todos__input {
+    width: 80%;
+    padding: 0.25rem;
+}
+
+.todo__add {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    background: blue;
+    color: white;
+    border: 2px solid white;
+}
+
 .talk__container {
     display: grid;
     place-items: center;
-    
+    padding: 1rem;
 }
