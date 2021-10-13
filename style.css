@@ -9,6 +9,10 @@ body {
     color: rgb(27, 27, 27);
 }
 
+.btn {
+    cursor: pointer;
+}
+
 body.dark {
     background: rgb(27, 27, 27);
     color: rgb(240, 240, 240);
@@ -54,6 +58,7 @@ body.dark {
     padding: 4px;
     position: relative;
     transform: scale(1.5);
+    cursor: pointer;
 }
 
 .header__ball {
@@ -129,6 +134,11 @@ body.dark {
     margin: auto;
 }
 
+.todos__info {
+    /* border: 1px solid blue; */
+    padding: 0.5rem;
+}
+
 .todos__item {
     display: flex;
     /* border: 2px solid pink; */
@@ -142,8 +152,18 @@ body.dark {
     color: snow;
 }
 
+.todos__priority {
+    background: rgb(167, 47, 47);
+    color: white;
+    border-radius: 8px;
+    display: inline-block;
+    width: 75px;
+    text-align: center;
+    font-size: 0.75rem;
+}
+
 .todos__text {
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
 }
 
 .todos__buttons {
@@ -160,10 +180,12 @@ body.dark {
 
 .fa-edit {
     color: green;
+    cursor: pointer;
 }
 
 .fa-trash-alt {
     color: red;
+    cursor: pointer;
 }
 
 .talk__container {
