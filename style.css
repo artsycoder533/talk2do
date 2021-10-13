@@ -44,6 +44,9 @@ body.dark {
     width: 50px;
     height: 22px;
     background-color: #111;
+    /* change background color here */
+    /* background: rgb(141, 139, 139); */
+    background: rgb(27, 27, 27);
     display: flex;
     align-items: center;
     justify-content: space-between;
