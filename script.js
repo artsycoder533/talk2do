@@ -1,7 +1,7 @@
 const toggleBtn = document.getElementById("checkbox");
-const todoItem = document.querySelector(".todos__item");
+// const todoItem = document.querySelector(".todos__item");
 const todoInput = document.querySelector(".todos__input");
-const containter = document.querySelector(".todos__container");
+// const containter = document.querySelector(".todos__container");
 const modal = document.querySelector(".modal"); 
 const talkBtn = document.querySelector(".talk");
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -28,15 +28,40 @@ function searchForKeyword(message) {
     //check if entire message is dark mode on
     if (message === "dark mode on" && !document.body.classList.contains("dark")) {
         toggleBtn.click();
-        
     }
+
     else if (message === "dark mode off" && document.body.classList.contains("dark")) {
         toggleBtn.click();
     }
+
+    const arr = message.split(" ");
+    let keyword = arr.shift();
+    let result = arr.join(" ");
+
+    //add
+    if (keyword === "add") {
+        renderTodo(result);
+    }
+    //edit
+    if (keyword === "edit") {
+        
+    }
+    //delete
+    if (keyword === "delete") {
+        
+    }
+    //complete
+    if (keyword === "complete") {
+        
+    }
 }
+
+
 
 toggleBtn.addEventListener("click", () => {
 	document.body.classList.toggle("dark");
+	todoItem.classList.toggle("dark");
+	todoInput.classList.toggle("dark");
 });
 
 // create elements
@@ -69,19 +94,21 @@ function createElementWithThreeAttributes(type, className, attr1, attrName1, att
 	return element;
 }
 
-function renderTodo() {
+function renderTodo(input) {
 	const todosContainer = document.querySelector(".todos__list");
-	const todosItem = document.querySelector("div", "todos__item");
+	const todosItem = createElementWithClass("div", "todos__item");
 	const todosInfo = createElementWithClass("div", "todos__info");
 	const priority = createElementWithClass("span", "todos__priority");
-	const p = createElementWithClass("p", "todos__text");
+	const p = createTextElementWithClass("p", "todos__text", input);
 	todosInfo.appendChild(priority);
 	todosInfo.appendChild(p);
 	todosItem.appendChild(todosInfo);
 	const todosButtons = createElementWithClass("div", "todos__buttons");
-    const editBtn = createElementWithClass("i", "fas fa-edit");
+    const editBtn = createElementWithClass("i", "fas");
+    editBtn.classList.add("fa-edit");
     editBtn.classList.add("todos__icon");
-    const deleteBtn = createElementWithClass("i", "fas fa-trash-alt");
+    const deleteBtn = createElementWithClass("i", "fas");
+    deleteBtn.classList.add("fa-trash-alt");
     editBtn.classList.add("todos__icon");
     todosButtons.appendChild(editBtn);
     todosButtons.appendChild(deleteBtn);
