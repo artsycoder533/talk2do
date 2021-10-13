@@ -26,6 +26,22 @@ function createTextElementWithClass(type, className, text) {
     return element;
 }
 
+function createElementWithAttribute(type, className, attr, attrName) {
+    const element = document.createElement(type);
+    element.classList.add(className);
+    element.setAttribute(attr, attrName);
+    return element;
+}
+
+function createElementWithThreeAttributes(type, className, attr1, attrName1, attr2, attrName2, id, idName) {
+	const element = document.createElement(type);
+	element.classList.add(className);
+    element.setAttribute(attr1, attrName1);
+    element.setAttribute(attr2, attrName2);
+    element.setAttribute(id, idName);
+	return element;
+}
+
 
 
 checkbox.addEventListener("click", () => {
