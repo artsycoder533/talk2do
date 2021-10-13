@@ -53,6 +53,10 @@
     transition: transform 0.2s linear;
 }
 
+.header__checkbox:checked + .header__label .header__ball {
+    transform: translateX(24px);
+}
+
 .talk {
     font-size: 3rem;
     border-radius: 50%;
