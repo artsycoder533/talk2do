@@ -28,6 +28,7 @@ function searchForKeyword(message) {
     //check if entire message is dark mode on
     if (message === "dark mode on" && !document.body.classList.contains("dark")) {
         toggleBtn.click();
+        setDarkModeToAllTodos();
     }
 
     else if (message === "dark mode off" && document.body.classList.contains("dark")) {
@@ -98,18 +99,18 @@ function renderTodo(input) {
 	const todosContainer = document.querySelector(".todos__list");
 	const todosItem = createElementWithClass("div", "todos__item");
 	const todosInfo = createElementWithClass("div", "todos__info");
-	const priority = createElementWithClass("span", "todos__priority");
+	// const priority = createElementWithClass("span", "todos__priority");
 	const p = createTextElementWithClass("p", "todos__text", input);
-	todosInfo.appendChild(priority);
+	// todosInfo.appendChild(priority);
 	todosInfo.appendChild(p);
 	todosItem.appendChild(todosInfo);
 	const todosButtons = createElementWithClass("div", "todos__buttons");
     const editBtn = createElementWithClass("i", "fas");
     editBtn.classList.add("fa-edit");
-    editBtn.classList.add("todos__icon");
+    editBtn.classList.add("todos__icons");
     const deleteBtn = createElementWithClass("i", "fas");
     deleteBtn.classList.add("fa-trash-alt");
-    editBtn.classList.add("todos__icon");
+    deleteBtn.classList.add("todos__icons");
     todosButtons.appendChild(editBtn);
     todosButtons.appendChild(deleteBtn);
     todosItem.appendChild(todosButtons);
@@ -117,6 +118,21 @@ function renderTodo(input) {
     return todosContainer;
 }
 
+
+//get all todo elements
+function setDarkModeToAllTodos(status) {
+    const allTodos = document.querySelectorAll(".todos__item");
+    if (status === "remove") {
+        allTodos.forEach(item => {
+            item.classList.remove("dark");
+        });
+    }
+    else if (status === "add") {
+        allTodos.forEach(item => {
+            item.classList.add("dark");
+        });
+    }
+}
 // render elements
 // function renderHeader() {
 //     const header = createElementWithClass("header", "header");
