@@ -1,4 +1,5 @@
 const toggleBtn = document.getElementById("checkbox");
+const checker = document.querySelector(".todos__input");
 // const todoItem = document.querySelector(".todos__item");
 const todoInput = document.querySelector(".todos__input");
 // const containter = document.querySelector(".todos__container");
@@ -19,6 +20,7 @@ talkBtn.addEventListener("click", () => {
     recognition.onresult = (e) => {
         const text = e.results[0][0].transcript;
         console.log(text);
+        checker.value = text;
         searchForKeyword(text);
     }
 
