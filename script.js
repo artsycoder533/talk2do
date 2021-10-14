@@ -15,7 +15,7 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 
 //mic
 talkBtn.addEventListener("click", () => {
-    const recognition = new SpeechRecognition();
+    const recognition = new webkitSpeechRecognition();
     recognition.start();
     recognition.onresult = (e) => {
         const text = e.results[0][0].transcript;
