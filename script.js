@@ -28,11 +28,12 @@ function searchForKeyword(message) {
     //check if entire message is dark mode on
     if (message === "dark mode on" && !document.body.classList.contains("dark")) {
         toggleBtn.click();
-        setDarkModeToAllTodos();
+        setDarkModeToAllTodos("add");
     }
 
     else if (message === "dark mode off" && document.body.classList.contains("dark")) {
         toggleBtn.click();
+        setDarkModeToAllTodos("remove");
     }
 
     const arr = message.split(" ");
@@ -53,15 +54,24 @@ function searchForKeyword(message) {
     }
     //complete
     if (keyword === "complete") {
-        
+        completeTodo(result);
     }
 }
 
+function completeTodo(text) {
+    const parent = document.querySelectorAll(".todos__info");
+    parent.forEach(element => {
+        if (element.children[0].textContent === text) {
+            element.children[0].classList.add("complete");
+            element.previousElementSibling.checked = true;
+        }
+    });
+}
 
 
 toggleBtn.addEventListener("click", () => {
 	document.body.classList.toggle("dark");
-	todoItem.classList.toggle("dark");
+	// todoItem.classList.toggle("dark");
 	todoInput.classList.toggle("dark");
 });
 
@@ -96,8 +106,10 @@ function createElementWithThreeAttributes(type, className, attr1, attrName1, att
 }
 
 function renderTodo(input) {
-	const todosContainer = document.querySelector(".todos__list");
-	const todosItem = createElementWithClass("div", "todos__item");
+    const todosContainer = document.querySelector(".todos__list");
+    const todosItem = createElementWithClass("div", "todos__item");
+    const checkbox = createElementWithThreeAttributes("input", "todos__checkbox", "type", "checkbox", "name", "checkbox", "id", "checkbox");
+    todosItem.appendChild(checkbox);
 	const todosInfo = createElementWithClass("div", "todos__info");
 	// const priority = createElementWithClass("span", "todos__priority");
 	const p = createTextElementWithClass("p", "todos__text", input);
