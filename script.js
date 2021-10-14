@@ -20,7 +20,7 @@ talkBtn.addEventListener("click", () => {
     recognition.onresult = (e) => {
         const text = e.results[0][0].transcript;
         console.log(text);
-        checker.value = text;
+        // checker.value = text;
         searchForKeyword(text);
     }
 
@@ -29,6 +29,7 @@ talkBtn.addEventListener("click", () => {
 function searchForKeyword(message) {
     //check if entire message is dark mode on
     if (message === "dark mode on" && !document.body.classList.contains("dark")) {
+        checker.value = message;
         toggleBtn.click();
         setDarkModeToAllTodos("add");
     }
