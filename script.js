@@ -72,7 +72,11 @@ function completeTodo(text) {
 toggleBtn.addEventListener("click", () => {
 	document.body.classList.toggle("dark");
 	// todoItem.classList.toggle("dark");
-	todoInput.classList.toggle("dark");
+    todoInput.classList.toggle("dark");
+    const allTodos = document.querySelectorAll(".todos__item");
+    allTodos.forEach(item => {
+        item.classList.toggle("dark");
+    })
 });
 
 // create elements
