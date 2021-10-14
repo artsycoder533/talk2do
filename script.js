@@ -20,7 +20,7 @@ talkBtn.addEventListener("click", () => {
     recognition.onresult = (e) => {
         const text = e.results[0][0].transcript;
         console.log(text);
-        // checker.value = text;
+        checker.value = text;
         searchForKeyword(text);
     }
 
@@ -28,6 +28,7 @@ talkBtn.addEventListener("click", () => {
 
 function searchForKeyword(message) {
     //check if entire message is dark mode on
+    checker.value = message;
     if (message === "dark mode on" && !document.body.classList.contains("dark")) {
         checker.value = message;
         toggleBtn.click();
@@ -115,6 +116,10 @@ function createElementWithThreeAttributes(type, className, attr1, attrName1, att
 function renderTodo(input) {
     const todosContainer = document.querySelector(".todos__list");
     const todosItem = createElementWithClass("div", "todos__item");
+    //check for dark mode
+    if (document.body.classList.contains("dark")) {
+        todosItem.classList.add("dark");
+    }
     const checkbox = createElementWithThreeAttributes("input", "todos__checkbox", "type", "checkbox", "name", "checkbox", "id", "checkbox");
     todosItem.appendChild(checkbox);
 	const todosInfo = createElementWithClass("div", "todos__info");
