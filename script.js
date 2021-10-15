@@ -156,15 +156,18 @@ function renderTodo(input) {
 
 //get all todo elements
 function setDarkModeToAllTodos(status) {
+    checker.value = "inside setDarkModeToAllTodos";
     const allTodos = document.querySelectorAll(".todos__item");
     if (status === "remove") {
         allTodos.forEach(item => {
             item.classList.remove("dark");
+            checker.value = "dark mode successsfully disabled";
         });
     }
     else if (status === "add") {
         allTodos.forEach(item => {
             item.classList.add("dark");
+            checker.value = "dark mode successfully enabled";
         });
     }
 }
