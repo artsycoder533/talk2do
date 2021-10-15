@@ -123,6 +123,7 @@ function createElementWithThreeAttributes(type, className, attr1, attrName1, att
 }
 
 function renderTodo(input) {
+    checker.value = input;
     const todosContainer = document.querySelector(".todos__list");
     const todosItem = createElementWithClass("div", "todos__item");
     //check for dark mode
@@ -166,6 +167,7 @@ function setDarkModeToAllTodos(status) {
         });
     }
 }
+
 // render elements
 // function renderHeader() {
 //     const header = createElementWithClass("header", "header");
