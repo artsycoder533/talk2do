@@ -56,6 +56,7 @@ function searchForKeyword(message) {
     if (keyword === "add") {
         checker.value = result;
         renderTodo(result);
+        checker.value = "item successfully added!";
     }
     //edit
     if (keyword === "edit") {
