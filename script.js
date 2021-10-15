@@ -9,23 +9,17 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 
 
 // page load
-/**
- * Gets the local audio stream of the current caller
- * @param callbacks - an object to set the success/error behavior
- * @returns {void}
- */
+window.addEventListener("load", () => {
+    //add constraints object
+    const constraints = { audio: true, video: false };
+    //call get user media
+    navigator.mediaDevices.getUserMedia(constraints).then(function (mediaStream){
+        checker.value = "you let me use your mic!";
+    }).catch(function (err) {
+        checker.value = "mic access denied";
+    })
+});
 
-function getLocalStream() {
-    navigator.mediaDevices.getUserMedia({video: false, audio: true}).then( stream => {
-        window.localStream = stream;
-        window.localAudio.srcObject = stream;
-        window.localAudio.autoplay = true;
-    }).catch( err => {
-        console.log("u got an error:" + err)
-    });
-}
-
-getLocalStream();
 
 //mic
 talkBtn.addEventListener("click", () => {
