@@ -60,12 +60,14 @@ function searchForKeyword(message) {
     }
     //edit
     if (keyword === "edit") {
-        
+        editTodo(result);
     }
+
     //delete
     if (keyword === "delete") {
-        
+        deleteTodo(result);
     }
+
     //complete
     if (keyword === "complete") {
         completeTodo(result);
@@ -82,6 +84,34 @@ function completeTodo(text) {
     });
 }
 
+function deleteTodo(text) {
+    const parent = document.querySelectorAll(".todos__info");
+    parent.forEach(element => {
+        if (element.children[0].textContent === text) {
+            element.parentElement.remove();
+        }
+    });
+}
+
+function editTodo(text) {
+    const parent = document.querySelectorAll(".todos__info");
+    parent.forEach(element => {
+        if (element.children[0].textContent === text) {
+            //speech synthesis
+            let newText = getReplacementText(text);
+            element.children[0].textContent = newText;
+        }
+    });
+}
+
+function getReplacementText(text) {
+    const speech = new SpeechSynthesisUtterance();
+    speech.text = `What would you like to replace ${text} with?`;
+    speech.volume = 1;
+    speech.rate = 1;
+    speech.pitch = 0.5;
+    window.speechSynthesis.speak(speech);
+}
 
 toggleBtn.addEventListener("click", () => {
 	document.body.classList.toggle("dark");
@@ -139,16 +169,16 @@ function renderTodo(input) {
 	// todosInfo.appendChild(priority);
 	todosInfo.appendChild(p);
 	todosItem.appendChild(todosInfo);
-	const todosButtons = createElementWithClass("div", "todos__buttons");
-    const editBtn = createElementWithClass("i", "fas");
-    editBtn.classList.add("fa-edit");
-    editBtn.classList.add("todos__icons");
-    const deleteBtn = createElementWithClass("i", "fas");
-    deleteBtn.classList.add("fa-trash-alt");
-    deleteBtn.classList.add("todos__icons");
-    todosButtons.appendChild(editBtn);
-    todosButtons.appendChild(deleteBtn);
-    todosItem.appendChild(todosButtons);
+	// const todosButtons = createElementWithClass("div", "todos__buttons");
+    // const editBtn = createElementWithClass("i", "fas");
+    // editBtn.classList.add("fa-edit");
+    // editBtn.classList.add("todos__icons");
+    // const deleteBtn = createElementWithClass("i", "fas");
+    // deleteBtn.classList.add("fa-trash-alt");
+    // deleteBtn.classList.add("todos__icons");
+    // todosButtons.appendChild(editBtn);
+    // todosButtons.appendChild(deleteBtn);
+    // todosItem.appendChild(todosButtons);
     todosContainer.appendChild(todosItem);
     return todosContainer;
 }
