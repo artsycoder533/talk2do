@@ -82,7 +82,7 @@ body.dark {
     top: 2px;
     left: 2px;
     border-radius: 50%;
-    transition: transform 0.2s linear;
+    transition: transform 0.4s ease-in-out;
 }
 
 .header__checkbox:checked + .header__label .header__ball {
@@ -154,7 +154,13 @@ body.dark {
     border-radius: 8px;
     align-items: center;
     background: white;
-    animation: add 1s ease-in-out 0s;
+    animation: add 0.5s ease-in-out 0s;
+}
+
+.todos__item.remove {
+    transition: all 1s ease-in-out;
+    transform: translateY(5rem) rotateZ(20deg);
+    opacity: 0;
 }
 
 @keyframes add {
@@ -190,6 +196,7 @@ body.dark {
 .todos__text.complete {
     text-decoration: line-through;
     transition: all 1.5s ease-in-out;
+    opacity: 0.3;
 }
 
 .todos__buttons {

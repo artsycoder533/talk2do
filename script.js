@@ -131,7 +131,10 @@ function deleteTodo(text) {
     const parent = document.querySelectorAll(".todos__info");
     parent.forEach(element => {
         if (element.children[0].textContent === text) {
-            element.parentElement.remove();
+            element.parentElement.classList.add("remove");
+            setTimeout(() => {
+                element.parentElement.remove();
+            }, 1000);
         }
     });
 }
@@ -140,7 +143,12 @@ function deleteAllTodos() {
     const parent = document.querySelector(".todos__list");
     let children = Array.from(parent.children);
     children.forEach(child => {
-        parent.removeChild(child);
+        console.log(child);
+        child.classList.add("remove");
+        setTimeout(() => {
+            parent.removeChild(child);
+        }, 1000);
+        
     });
 }
 
