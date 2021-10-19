@@ -14,9 +14,9 @@ window.addEventListener("load", () => {
     const constraints = { audio: true, video: false };
     //call get user media
     navigator.mediaDevices.getUserMedia(constraints).then(function (mediaStream){
-        checker.value = "you let me use your mic!";
+        //checker.value = "you let me use your mic!";
     }).catch(function (err) {
-        checker.value = "mic access denied";
+        //checker.value = "mic access denied";
     })
 });
 
@@ -28,7 +28,7 @@ talkBtn.addEventListener("click", () => {
     recognition.onresult = (e) => {
         const text = e.results[0][0].transcript;
         console.log(text);
-        checker.value = text;
+        //checker.value = text;
         searchForKeyword(text);
     }
 
@@ -38,12 +38,13 @@ function searchForKeyword(message) {
     //check if entire message is dark mode on
    // checker.value = message;
     if (message === "dark mode on" && !document.body.classList.contains("dark")) {
-        checker.value = message;
+        //checker.value = "dark mode enabled";
         toggleBtn.click();
         setDarkModeToAllTodos("add");
     }
 
     else if (message === "dark mode off" && document.body.classList.contains("dark")) {
+        //checker.value = "dark mode disabled";
         toggleBtn.click();
         setDarkModeToAllTodos("remove");
     }
@@ -66,9 +67,9 @@ function searchForKeyword(message) {
 
     //add
     if (keyword === "add") {
-        checker.value = result;
+       // checker.value = result;
         renderTodo(result);
-        checker.value = "item successfully added!";
+        //checker.value = "item successfully added!";
     }
     //edit
     if (keyword === "edit") {
@@ -118,6 +119,8 @@ function deleteTodo(text) {
 }
 
 function deleteAllTodos() {
+    const modal = document.querySelector(".modal");
+    
     const parent = document.querySelector(".todos__list");
     let children = Array.from(parent.children);
     children.forEach(child => {
@@ -185,7 +188,7 @@ function undoAllTodos() {
 toggleBtn.addEventListener("click", () => {
 	document.body.classList.toggle("dark");
 	// todoItem.classList.toggle("dark");
-    todoInput.classList.toggle("dark");
+    //todoInput.classList.toggle("dark");
     const allTodos = document.querySelectorAll(".todos__item");
     allTodos.forEach(item => {
         item.classList.toggle("dark");
@@ -223,7 +226,7 @@ function createElementWithThreeAttributes(type, className, attr1, attrName1, att
 }
 
 function renderTodo(input) {
-    checker.value = input;
+    //checker.value = input;
     const todosContainer = document.querySelector(".todos__list");
     const todosItem = createElementWithClass("div", "todos__item");
     //check for dark mode
@@ -255,18 +258,18 @@ function renderTodo(input) {
 
 //get all todo elements
 function setDarkModeToAllTodos(status) {
-    checker.value = "inside setDarkModeToAllTodos";
+    //checker.value = "inside setDarkModeToAllTodos";
     const allTodos = document.querySelectorAll(".todos__item");
     if (status === "remove") {
         allTodos.forEach(item => {
             item.classList.remove("dark");
-            checker.value = "dark mode successsfully disabled";
+            //checker.value = "dark mode successsfully disabled";
         });
     }
     else if (status === "add") {
         allTodos.forEach(item => {
             item.classList.add("dark");
-            checker.value = "dark mode successfully enabled";
+            //checker.value = "dark mode successfully enabled";
         });
     }
 }
