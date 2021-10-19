@@ -38,10 +38,15 @@ instructionsMic.addEventListener("click", () => {
     recognition.onresult = (e) => {
         const text = e.results[0][0].transcript;
         console.log(text);
-        if (text === "hide instructions") {
+        if (text === "close instructions") {
             instructions.classList.add("hide");
         }
+
         else if (text === "dark mode on" && !document.body.classList.contains("dark")) {
+            toggleBtn.click();
+        }
+            
+        else if (text === "dark mode off" && document.body.classList.contains("dark")) {
             toggleBtn.click();
         }
     }
