@@ -48,6 +48,10 @@ function searchForKeyword(message) {
         setDarkModeToAllTodos("remove");
     }
 
+    else if (message === "complete all") {
+        completeAllTodo();
+    }
+
     const arr = message.split(" ");
     let keyword = arr.shift();
     let result = arr.join(" ");
@@ -76,6 +80,14 @@ function searchForKeyword(message) {
     if (keyword === "complete") {
         completeTodo(result);
     }
+}
+
+function completeAllTodo() {
+    const parent = document.querySelectorAll(".todos__info");
+    parent.forEach(element => {
+        element.children[0].classList.add("complete");
+        element.previousElementSibling.checked = true;
+    });
 }
 
 function completeTodo(text) {
