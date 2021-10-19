@@ -52,6 +52,14 @@ function searchForKeyword(message) {
         completeAllTodo();
     }
 
+    else if (message === "undo all") {
+        undoAllTodos();
+    }
+
+    else if (message === "delete all") {
+        deleteAllTodos();
+    }
+
     const arr = message.split(" ");
     let keyword = arr.shift();
     let result = arr.join(" ");
@@ -109,6 +117,14 @@ function deleteTodo(text) {
     });
 }
 
+function deleteAllTodos() {
+    const parent = document.querySelector(".todos__list");
+    let children = Array.from(parent.children);
+    children.forEach(child => {
+        parent.removeChild(child);
+    });
+}
+
 function editTodo(text) {
     const parent = document.querySelectorAll(".todos__info");
     parent.forEach(element => {
@@ -150,6 +166,16 @@ function undoCompletion(text) {
     const parent = document.querySelectorAll(".todos__info");
     parent.forEach(element => {
         if (element.children[0].textContent === text && element.children[0].classList.contains("complete")) {
+            element.children[0].classList.remove("complete");
+            element.previousElementSibling.checked = false;
+        }
+    });
+}
+
+function undoAllTodos() {
+    const parent = document.querySelectorAll(".todos__info");
+    parent.forEach(element => {
+        if (element.children[0].classList.contains("complete")) {
             element.children[0].classList.remove("complete");
             element.previousElementSibling.checked = false;
         }
