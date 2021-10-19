@@ -154,6 +154,16 @@ body.dark {
     border-radius: 8px;
     align-items: center;
     background: white;
+    animation: add 1s ease-in-out 0s;
+}
+
+@keyframes add {
+    from {
+        transform: translateY(-500%);
+    }
+    to {
+        transform: translateY(0);
+    }
 }
 
 .todos__item.dark {
