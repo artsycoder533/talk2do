@@ -184,7 +184,7 @@ function undoAllTodos() {
     parent.forEach(element => {
         if (element.children[0].classList.contains("complete")) {
             element.children[0].classList.remove("complete");
-            element.previousElementSibling.checked = false;
+            element.previousElementSibling.classList.remove("completed");
         }
     });
 }
