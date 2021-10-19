@@ -218,7 +218,7 @@ body.dark {
 .modal__container {
     width: 300px;
     height: 300px;
-    border: 2px solid green;
+    /* border: 2px solid green; */
     display: grid;
     place-items: center;
     background: white;

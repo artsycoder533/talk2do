@@ -40,6 +40,7 @@ instructionsMic.addEventListener("click", () => {
     recognition.start();
     recognition.onresult = (e) => {
         const text = e.results[0][0].transcript;
+        console.log(text);
         if (text === "hide instructions") {
             instructions.classList.add("hide");
         }
@@ -89,21 +90,21 @@ function searchForKeyword(message) {
         //checker.value = "item successfully added!";
     }
     //edit
-    if (keyword === "edit") {
+    else if (keyword === "edit") {
         editTodo(result);
     }
 
-    if (keyword === "undo") {
+    else if (keyword === "undo") {
         undoCompletion(result);
     }
 
     //delete
-    if (keyword === "delete") {
+    else if (keyword === "delete") {
         deleteTodo(result);
     }
 
     //complete
-    if (keyword === "complete") {
+    else if (keyword === "complete") {
         completeTodo(result);
     }
 }
