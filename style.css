@@ -160,9 +160,11 @@ body.dark {
 @keyframes add {
     from {
         transform: translateY(-500%);
+        opacity: 0;
     }
     to {
         transform: translateY(0);
+        opacity: 1;
     }
 }
 
@@ -187,6 +189,7 @@ body.dark {
 
 .todos__text.complete {
     text-decoration: line-through;
+    transition: all 1.5s ease-in-out;
 }
 
 .todos__buttons {
@@ -219,6 +222,7 @@ body.dark {
 
 .fa-check {
     opacity: 0;
+    margin-left: 1rem;
 }
 
 .fa-check.visible {
