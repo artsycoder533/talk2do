@@ -59,9 +59,6 @@ body.dark {
     width: 50px;
     height: 22px;
     background-color: #111;
-    /* change background color here */
-    /* background: rgb(141, 139, 139); */
-    background: rgb(27, 27, 27);
     background: gray;
     display: flex;
     align-items: center;
@@ -106,19 +103,16 @@ body.dark {
 /* Todos */
 .todos {
     height: calc(100vh - 50px - 96px);
-    /* border: 2px solid yellow; */
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 }
 
 .todos__container {
-    /* /* height: 100%; */
     width: 100%;
     padding: 1rem;
     display: flex;
     justify-content: space-between;
-    /* border: 2px solid orange; */
 }
 
 .todos__input {
@@ -144,7 +138,6 @@ body.dark {
 }
 
 .todos__list {
-    /* border: 2px solid blue; */
     height: 100%;
     width: 90vw;
     max-width: 500px;
@@ -152,13 +145,11 @@ body.dark {
 }
 
 .todos__info {
-    /* border: 1px solid blue; */
     padding: 0.5rem;
 }
 
 .todos__item {
     display: flex;
-    /* border: 2px solid pink; */
     margin: 1rem 0;
     border-radius: 8px;
     align-items: center;
@@ -249,7 +240,6 @@ body.dark {
 .modal__container {
     width: 300px;
     height: 300px;
-    /* border: 2px solid green; */
     display: grid;
     place-items: center;
     background: white;
@@ -277,12 +267,8 @@ body.dark {
 }
 
 .instructions__container {
-    /* border: 2px solid; */
     padding: 2rem;
-    /* height: 100vh;
-    width: 100vw; */
     background: whitesmoke;
-    
 }
 
 .instructions__container.dark {
