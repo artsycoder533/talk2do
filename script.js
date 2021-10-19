@@ -150,36 +150,36 @@ function editTodo(text) {
     parent.forEach(element => {
         if (element.children[0].textContent === text) {
             //speech synthesis
-            let words = getReplacementText(text);
-            console.log(words);
-            element.children[0].textContent = words;
+            const speech = new SpeechSynthesisUtterance();
+            const modal = document.querySelector(".modal");
+            speech.text = `What would you like to replace ${text} with?`;
+            speech.volume = 1;
+            speech.rate = 1;
+            speech.pitch = 0.5;
+            window.speechSynthesis.speak(speech);
+            modal.classList.add("show");
+            const modalMic = document.getElementById("secondaryMic");
+            modalMic.addEventListener("click", () => {
+                const recognition = new webkitSpeechRecognition();
+                recognition.start();
+                recognition.onresult = (e) => {
+                    const message = e.results[0][0].transcript;
+                    element.children[0].textContent = message;
+                    modal.classList.remove("show");
+                    return;
+                }
+            });
         }
     });
 }
 
 function getReplacementText(message) {
-    const speech = new SpeechSynthesisUtterance();
-    const modal = document.querySelector(".modal");
     
-    speech.text = `What would you like to replace ${message} with?`;
-    speech.volume = 1;
-    speech.rate = 1;
-    speech.pitch = 0.5;
-    window.speechSynthesis.speak(speech);
-    modal.classList.add("show");
-    const modalMic = document.getElementById("secondaryMic");
-    modalMic.addEventListener("click", getEditText);
+    
 }
 
 function getEditText() {
-    const recognition = new webkitSpeechRecognition();
-    recognition.start();
-    recognition.onresult = (e) => {
-        const text = e.results[0][0].transcript;
-        //console.log(text);
-        modal.classList.remove("show");
-        return text;
-    }
+    
 }
 
 function undoCompletion(text) {
