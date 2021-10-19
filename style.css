@@ -166,8 +166,8 @@ body.dark {
     font-size: 0.75rem;
 }
 
-.todos__text {
-    /* padding: 0.5rem; */
+.todos__text.complete {
+    text-decoration: line-through;
 }
 
 .todos__buttons {

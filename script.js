@@ -3,8 +3,8 @@ const checker = document.querySelector(".todos__input");
 // const todoItem = document.querySelector(".todos__item");
 const todoInput = document.querySelector(".todos__input");
 // const containter = document.querySelector(".todos__container");
-const modal = document.querySelector(".modal"); 
-const talkBtn = document.querySelector(".talk");
+
+const talkBtn = document.getElementById("mainMic");
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
 
@@ -63,6 +63,10 @@ function searchForKeyword(message) {
         editTodo(result);
     }
 
+    if (keyword === "undo") {
+        undoCompletion(result);
+    }
+
     //delete
     if (keyword === "delete") {
         deleteTodo(result);
@@ -98,19 +102,46 @@ function editTodo(text) {
     parent.forEach(element => {
         if (element.children[0].textContent === text) {
             //speech synthesis
-            let newText = getReplacementText(text);
-            element.children[0].textContent = newText;
+            let words = getReplacementText(text);
+            console.log(words);
+            element.children[0].textContent = words;
         }
     });
 }
 
-function getReplacementText(text) {
+function getReplacementText(message) {
     const speech = new SpeechSynthesisUtterance();
-    speech.text = `What would you like to replace ${text} with?`;
+    const modal = document.querySelector(".modal");
+    
+    speech.text = `What would you like to replace ${message} with?`;
     speech.volume = 1;
     speech.rate = 1;
     speech.pitch = 0.5;
     window.speechSynthesis.speak(speech);
+    modal.classList.add("show");
+    const modalMic = document.getElementById("secondaryMic");
+    modalMic.addEventListener("click", getEditText);
+}
+
+function getEditText() {
+    const recognition = new webkitSpeechRecognition();
+    recognition.start();
+    recognition.onresult = (e) => {
+        const text = e.results[0][0].transcript;
+        //console.log(text);
+        modal.classList.remove("show");
+        return text;
+    }
+}
+
+function undoCompletion(text) {
+    const parent = document.querySelectorAll(".todos__info");
+    parent.forEach(element => {
+        if (element.children[0].textContent === text && element.children[0].classList.contains("complete")) {
+            element.children[0].classList.remove("complete");
+            element.previousElementSibling.checked = false;
+        }
+    });
 }
 
 toggleBtn.addEventListener("click", () => {
