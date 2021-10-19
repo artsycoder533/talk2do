@@ -1,12 +1,8 @@
 const toggleBtn = document.getElementById("checkbox");
 const checker = document.querySelector(".todos__input");
-// const todoItem = document.querySelector(".todos__item");
 const todoInput = document.querySelector(".todos__input");
-// const containter = document.querySelector(".todos__container");
-
 const talkBtn = document.getElementById("mainMic");
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
 const instructionsMic = document.getElementById("instructions");
 
 // page load
@@ -29,7 +25,6 @@ talkBtn.addEventListener("click", () => {
     recognition.onresult = (e) => {
         const text = e.results[0][0].transcript;
         console.log(text);
-        //checker.value = text;
         searchForKeyword(text);
     }
 });
@@ -51,16 +46,12 @@ instructionsMic.addEventListener("click", () => {
 });
 
 function searchForKeyword(message) {
-    //check if entire message is dark mode on
-   // checker.value = message;
     if (message === "dark mode on" && !document.body.classList.contains("dark")) {
-        //checker.value = "dark mode enabled";
         toggleBtn.click();
         setDarkModeToAllTodos("add");
     }
 
     else if (message === "dark mode off" && document.body.classList.contains("dark")) {
-        //checker.value = "dark mode disabled";
         toggleBtn.click();
         setDarkModeToAllTodos("remove");
     }
@@ -88,10 +79,9 @@ function searchForKeyword(message) {
 
     //add
     if (keyword === "add") {
-       // checker.value = result;
         renderTodo(result);
-        //checker.value = "item successfully added!";
     }
+
     //edit
     else if (keyword === "edit") {
         editTodo(result);
@@ -125,7 +115,6 @@ function completeTodo(text) {
     parent.forEach(element => {
         if (element.children[0].textContent === text) {
             element.children[0].classList.add("complete");
-            //element.previousElementSibling.checked = true;
             element.previousElementSibling.classList.add("visible")
         }
     });
@@ -141,8 +130,6 @@ function deleteTodo(text) {
 }
 
 function deleteAllTodos() {
-    // const modal = document.querySelector(".modal");
-    
     const parent = document.querySelector(".todos__list");
     let children = Array.from(parent.children);
     children.forEach(child => {
@@ -208,8 +195,6 @@ toggleBtn.addEventListener("click", () => {
     toggleBackground.classList.toggle("dark");
     const modal = document.querySelector(".modal__container");
     modal.classList.toggle("dark");
-	// todoItem.classList.toggle("dark");
-    //todoInput.classList.toggle("dark");
     const allTodos = document.querySelectorAll(".todos__item");
     allTodos.forEach(item => {
         item.classList.toggle("dark");
@@ -247,34 +232,19 @@ function createElementWithThreeAttributes(type, className, attr1, attrName1, att
 }
 
 function renderTodo(input) {
-    //checker.value = input;
     const todosContainer = document.querySelector(".todos__list");
     const todosItem = createElementWithClass("div", "todos__item");
     //check for dark mode
     if (document.body.classList.contains("dark")) {
         todosItem.classList.add("dark");
     }
-    // const checkbox = createElementWithThreeAttributes("input", "todos__checkbox", "type", "checkbox", "name", "checkbox", "id", "checkbox");
     const check = createElementWithClass("i", "fas");
     check.classList.add("fa-check");
-    
     todosItem.appendChild(check);
 	const todosInfo = createElementWithClass("div", "todos__info");
-	// const priority = createElementWithClass("span", "todos__priority");
 	const p = createTextElementWithClass("p", "todos__text", input);
-	// todosInfo.appendChild(priority);
 	todosInfo.appendChild(p);
 	todosItem.appendChild(todosInfo);
-	// const todosButtons = createElementWithClass("div", "todos__buttons");
-    // const editBtn = createElementWithClass("i", "fas");
-    // editBtn.classList.add("fa-edit");
-    // editBtn.classList.add("todos__icons");
-    // const deleteBtn = createElementWithClass("i", "fas");
-    // deleteBtn.classList.add("fa-trash-alt");
-    // deleteBtn.classList.add("todos__icons");
-    // todosButtons.appendChild(editBtn);
-    // todosButtons.appendChild(deleteBtn);
-    // todosItem.appendChild(todosButtons);
     todosContainer.appendChild(todosItem);
     return todosContainer;
 }
@@ -282,50 +252,15 @@ function renderTodo(input) {
 
 //get all todo elements
 function setDarkModeToAllTodos(status) {
-    //checker.value = "inside setDarkModeToAllTodos";
     const allTodos = document.querySelectorAll(".todos__item");
     if (status === "remove") {
         allTodos.forEach(item => {
             item.classList.remove("dark");
-            //checker.value = "dark mode successsfully disabled";
         });
     }
     else if (status === "add") {
         allTodos.forEach(item => {
             item.classList.add("dark");
-            //checker.value = "dark mode successfully enabled";
         });
     }
 }
-
-// render elements
-// function renderHeader() {
-//     const header = createElementWithClass("header", "header");
-//     const nav = createElementWithClass("nav", "header__container");
-//     const h1 = createTextElementWithClass("h1", "header__brand", "Talk2Do");
-//     const div = createElementWithClass("div", "header__toggle");
-//     const input = createElementWithThreeAttributes("input", "header__checkbox", "type", "checkbox", "id", "text");
-//     const label = createElementWithAttribute("label", "header__label", "for", "checkbox");
-//     const moonIcon = createElementWithClass("i", "fas fa-moon");
-//     const adjustIcon = createElementWithClass("i", "fas fa-adjust");
-//     const ball = createElementWithClass("div", "header__ball");
-//     label.append(moonIcon, adjustIcon, ball);
-//     div.append(input, label);
-//     nav.append(h1, div);
-//     header.append(nav);
-//     return header;
-// }
-
-// function renderContainer() {
-    
-// }
-
-
-
-// checkbox.addEventListener("click", () => {
-// 	//change theme of website
-// 	document.body.classList.toggle("dark");
-// 	toggleBtn.classList.toggle("dark");
-// 	todoItem.classList.toggle("dark");
-// 	todoInput.classList.toggle("dark");
-// });
