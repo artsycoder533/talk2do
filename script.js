@@ -44,6 +44,9 @@ instructionsMic.addEventListener("click", () => {
         if (text === "hide instructions") {
             instructions.classList.add("hide");
         }
+        else if (text === "dark mode on" && !document.body.classList.contains("dark")) {
+            toggleBtn.click();
+        }
     }
 });
 
@@ -113,7 +116,7 @@ function completeAllTodo() {
     const parent = document.querySelectorAll(".todos__info");
     parent.forEach(element => {
         element.children[0].classList.add("complete");
-        element.previousElementSibling.checked = true;
+        element.previousElementSibling.classList.add("visible");
     });
 }
 
@@ -122,7 +125,8 @@ function completeTodo(text) {
     parent.forEach(element => {
         if (element.children[0].textContent === text) {
             element.children[0].classList.add("complete");
-            element.previousElementSibling.checked = true;
+            //element.previousElementSibling.checked = true;
+            element.previousElementSibling.classList.add("visible")
         }
     });
 }
@@ -137,7 +141,7 @@ function deleteTodo(text) {
 }
 
 function deleteAllTodos() {
-    const modal = document.querySelector(".modal");
+    // const modal = document.querySelector(".modal");
     
     const parent = document.querySelector(".todos__list");
     let children = Array.from(parent.children);
@@ -174,21 +178,14 @@ function editTodo(text) {
     });
 }
 
-function getReplacementText(message) {
-    
-    
-}
 
-function getEditText() {
-    
-}
 
 function undoCompletion(text) {
     const parent = document.querySelectorAll(".todos__info");
     parent.forEach(element => {
         if (element.children[0].textContent === text && element.children[0].classList.contains("complete")) {
             element.children[0].classList.remove("complete");
-            element.previousElementSibling.checked = false;
+            element.previousElementSibling.classList.remove("visible");
         }
     });
 }
@@ -204,7 +201,13 @@ function undoAllTodos() {
 }
 
 toggleBtn.addEventListener("click", () => {
-	document.body.classList.toggle("dark");
+    document.body.classList.toggle("dark");
+    const instructions = document.querySelector(".instructions__container");
+    instructions.classList.toggle("dark");
+    const toggleBackground = document.querySelector(".header__label");
+    toggleBackground.classList.toggle("dark");
+    const modal = document.querySelector(".modal__container");
+    modal.classList.toggle("dark");
 	// todoItem.classList.toggle("dark");
     //todoInput.classList.toggle("dark");
     const allTodos = document.querySelectorAll(".todos__item");
@@ -251,8 +254,11 @@ function renderTodo(input) {
     if (document.body.classList.contains("dark")) {
         todosItem.classList.add("dark");
     }
-    const checkbox = createElementWithThreeAttributes("input", "todos__checkbox", "type", "checkbox", "name", "checkbox", "id", "checkbox");
-    todosItem.appendChild(checkbox);
+    // const checkbox = createElementWithThreeAttributes("input", "todos__checkbox", "type", "checkbox", "name", "checkbox", "id", "checkbox");
+    const check = createElementWithClass("i", "fas");
+    check.classList.add("fa-check");
+    
+    todosItem.appendChild(check);
 	const todosInfo = createElementWithClass("div", "todos__info");
 	// const priority = createElementWithClass("span", "todos__priority");
 	const p = createTextElementWithClass("p", "todos__text", input);

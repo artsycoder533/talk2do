@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ephesis&family=Open+Sans&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,6 +9,7 @@
 body {
     background: rgb(245, 240, 240);
     color: rgb(27, 27, 27);
+    font-family: 'Open Sans', sans-serif;
 }
 
 .btn {
@@ -37,8 +40,10 @@ body.dark {
     align-items: center;
 }
 
-.header__toggle {
-
+.header__brand {
+    font-family: 'Ephesis', cursive;
+    font-size: 2rem;
+    letter-spacing: 3px;;
 }
 
 .header__checkbox {
@@ -53,6 +58,7 @@ body.dark {
     /* change background color here */
     /* background: rgb(141, 139, 139); */
     background: rgb(27, 27, 27);
+    background: gray;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -61,6 +67,10 @@ body.dark {
     position: relative;
     transform: scale(1.5);
     cursor: pointer;
+}
+
+.header__label.dark {
+    background: rgb(27, 27, 27);
 }
 
 .header__ball {
@@ -156,6 +166,10 @@ body.dark {
     color: snow;
 }
 
+.todos__checkbox {
+    margin-left: 0.5rem;
+}
+
 .todos__priority {
     background: red;
     color: white;
@@ -198,6 +212,15 @@ body.dark {
     padding: 1rem;
 }
 
+.fa-check {
+    opacity: 0;
+}
+
+.fa-check.visible {
+    opacity: 1;
+    color: green;
+}
+
 /* Modal */
 .modal {
     position: fixed;
@@ -211,6 +234,7 @@ body.dark {
     transform: translateY(-100%);
 }
 
+
 .show {
     transform: translateY(0);
 }
@@ -222,6 +246,11 @@ body.dark {
     display: grid;
     place-items: center;
     background: white;
+}
+
+.modal__container.dark {
+    background: rgb(27, 27, 27);
+    color: rgb(240, 240, 240);
 }
 
 /* instructions modal */
@@ -245,8 +274,17 @@ body.dark {
     
 }
 
+.instructions__container.dark {
+    background: rgb(27, 27, 27);
+    color: rgb(240, 240, 240);
+}
+
 .instructions__header {
+    font-family: 'Ephesis', cursive;
     padding-bottom: 2rem;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    text-align: center;
 }
 
 .instructions__text {
@@ -266,5 +304,5 @@ body.dark {
 }
 
 .hide {
-    transform: translateY(-100%);
+    transform: translateY(-110%);
 }
