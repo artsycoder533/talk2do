@@ -16,6 +16,10 @@ body {
     cursor: pointer;
 }
 
+.btn:hover {
+    opacity: 0.6;
+}
+
 body.dark {
     background: rgb(27, 27, 27);
     color: rgb(240, 240, 240);
