@@ -234,6 +234,9 @@ body.dark {
     transform: translateY(-100%);
 }
 
+.modal.dark {
+    background: rgb(27, 27, 27);
+}
 
 .show {
     transform: translateY(0);
@@ -263,6 +266,10 @@ body.dark {
     width: 100vw;
     height: 100vh;
     background: whitesmoke;
+}
+
+.instructions.dark {
+    background: rgb(27, 27, 27);
 }
 
 .instructions__container {

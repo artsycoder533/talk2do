@@ -191,12 +191,16 @@ function undoAllTodos() {
 
 toggleBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark");
-    const instructions = document.querySelector(".instructions__container");
-    instructions.classList.toggle("dark");
+    const instructions = document.querySelector(".instructions");
+    instructions.classList.add("dark");
+    const instructionsContainer = document.querySelector(".instructions__container");
+    instructionsContainer.classList.toggle("dark");
     const toggleBackground = document.querySelector(".header__label");
     toggleBackground.classList.toggle("dark");
-    const modal = document.querySelector(".modal__container");
-    modal.classList.toggle("dark");
+    const modal = document.querySelector(".modal");
+    modal.classList.add("dark");
+    const modalContainer = document.querySelector(".modal__container");
+    modalContainer.classList.toggle("dark");
     const allTodos = document.querySelectorAll(".todos__item");
     allTodos.forEach(item => {
         item.classList.toggle("dark");
