@@ -1,3 +1,5 @@
+
+
 const toggleBtn = document.getElementById("checkbox");
 const checker = document.querySelector(".todos__input");
 const todoInput = document.querySelector(".todos__input");
