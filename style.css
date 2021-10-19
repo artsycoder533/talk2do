@@ -214,6 +214,7 @@ body.dark {
 .show {
     transform: translateY(0);
 }
+
 .modal__container {
     width: 300px;
     height: 300px;
@@ -261,4 +262,8 @@ body.dark {
     display: grid;
     place-items: center;
     padding: 4rem;
+}
+
+.hide {
+    transform: translateY(-100%);
 }

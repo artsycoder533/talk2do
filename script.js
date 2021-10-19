@@ -7,6 +7,7 @@ const todoInput = document.querySelector(".todos__input");
 const talkBtn = document.getElementById("mainMic");
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
+const instructionsMic = document.getElementById("instructions");
 
 // page load
 window.addEventListener("load", () => {
@@ -31,7 +32,18 @@ talkBtn.addEventListener("click", () => {
         //checker.value = text;
         searchForKeyword(text);
     }
+});
 
+instructionsMic.addEventListener("click", () => {
+    const instructions = document.querySelector(".instructions");
+    const recognition = new webkitSpeechRecognition();
+    recognition.start();
+    recognition.onresult = (e) => {
+        const text = e.results[0][0].transcript;
+        if (text === "hide instructions") {
+            instructions.classList.add("hide");
+        }
+    }
 });
 
 function searchForKeyword(message) {
@@ -59,6 +71,11 @@ function searchForKeyword(message) {
 
     else if (message === "delete all") {
         deleteAllTodos();
+    }
+
+    else if (message === "show instructions") {
+        const instructions = document.querySelector(".instructions");
+        instructions.classList.remove("hide");
     }
 
     const arr = message.split(" ");
