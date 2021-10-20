@@ -45,10 +45,12 @@ instructionsMic.addEventListener("click", () => {
 
         else if (text === "dark mode on" && !document.body.classList.contains("dark")) {
             toggleBtn.click();
+            addToLocalStorage("dark mode on");
         }
             
         else if (text === "dark mode off" && document.body.classList.contains("dark")) {
             toggleBtn.click();
+            replaceInLocalStorage("dark mode on", "dark mode off");
         }
     }
 });
@@ -56,11 +58,13 @@ instructionsMic.addEventListener("click", () => {
 function searchForKeyword(message) {
     if (message === "dark mode on" && !document.body.classList.contains("dark")) {
         toggleBtn.click();
+        addToLocalStorage("dark mode on");
         setDarkModeToAllTodos("add");
     }
 
     else if (message === "dark mode off" && document.body.classList.contains("dark")) {
         toggleBtn.click();
+        replaceInLocalStorage("dark mode on", "dark mode off");
         setDarkModeToAllTodos("remove");
     }
 
@@ -205,7 +209,7 @@ function undoAllTodos() {
     parent.forEach(element => {
         if (element.children[0].classList.contains("complete")) {
             element.children[0].classList.remove("complete");
-            element.previousElementSibling.classList.remove("completed");
+            element.previousElementSibling.classList.remove("visible");
             replaceInLocalStorage(`$`)
         }
     });
@@ -213,9 +217,7 @@ function undoAllTodos() {
 
 toggleBtn.addEventListener("click", () => {
     //check if local storage contains dark mode already, if so dont add it again
-    if (!checkLocalStorageForDarkMode("dark mode on")) {
-        addToLocalStorage("dark mode on");
-    }
+    
     document.body.classList.toggle("dark");
     const instructions = document.querySelector(".instructions");
     instructions.classList.add("dark");
