@@ -30,7 +30,7 @@ Talk2Do is a single page notes application that allows a user to operate its fun
 
 - Live site URL: [https://artsycoder533.github.io/talk2do/](https://artsycoder533.github.io/talk2do/)
 - Github Repository URL: [https://github.com/artsycoder533/talk2do.git](https://github.com/artsycoder533/talk2do.git)
-- Video Demo: [Youtube Demo]()
+- Video Demo: [Video Demo](Talk2Do.mp4) 
 
 ## My process
 
