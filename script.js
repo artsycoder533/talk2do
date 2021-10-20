@@ -107,7 +107,10 @@ function searchForKeyword(message) {
 
     //complete
     else if (keyword === "complete") {
+        removeFromLocalStorage(result);
+        addToLocalStorage(`${result}-complete`);
         completeTodo(result);
+        
     }
 }
 
@@ -124,7 +127,7 @@ function completeTodo(text) {
     parent.forEach(element => {
         if (element.children[0].textContent === text) {
             element.children[0].classList.add("complete");
-            element.previousElementSibling.classList.add("visible")
+            element.previousElementSibling.classList.add("visible");
         }
     });
 }
@@ -312,6 +315,11 @@ function getTodosFromLocalStorage() {
     todos.forEach(item => {
         if (item === "dark mode on" && !document.body.classList.contains("dark")) {
             toggleBtn.click();
+        }
+        else if (item.includes("-complete")) {
+            let sub = item.slice(0, item.indexOf("-"));
+            renderTodo(sub);
+            completeTodo(sub);
         }
         else {
             renderTodo(item);
