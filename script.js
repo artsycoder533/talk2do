@@ -17,6 +17,7 @@ window.addEventListener("load", () => {
     }).catch(function (err) {
         //checker.value = "mic access denied";
     })
+    getTodosFromLocalStorage();
 });
 
 
@@ -86,6 +87,7 @@ function searchForKeyword(message) {
 
     //add
     if (keyword === "add") {
+        addToLocalStorage(result);
         renderTodo(result);
     }
 
@@ -282,4 +284,30 @@ function setDarkModeToAllTodos(status) {
             item.classList.add("dark");
         });
     }
+}
+
+//add to local storage
+function addToLocalStorage(todo) {
+    let todos;
+    if (localStorage.getItem("todos") === null) {
+        todos = [];
+    }
+    else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
+    todos.push(todo);
+    localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function getTodosFromLocalStorage() {
+    let todos;
+    if (localStorage.getItem("todos") === null) {
+        todos = [];
+    }
+    else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
+    todos.forEach(item => {
+        renderTodo(item);
+    });
 }

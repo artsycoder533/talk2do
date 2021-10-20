@@ -82,7 +82,7 @@ body.dark {
     top: 2px;
     left: 2px;
     border-radius: 50%;
-    transition: transform 0.4s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 }
 
 .header__checkbox:checked + .header__label .header__ball {
@@ -159,7 +159,7 @@ body.dark {
 
 .todos__item.remove {
     transition: all 1s ease-in-out;
-    transform: translateY(5rem) rotateZ(20deg);
+    transform: translateY(5rem) rotateZ(30deg);
     opacity: 0;
 }
 
