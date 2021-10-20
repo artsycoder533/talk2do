@@ -294,6 +294,7 @@ body.dark {
 .instructions__container {
     padding: 2rem;
     background: whitesmoke;
+    max-width: 1200px;
 }
 
 .instructions__container.dark {
