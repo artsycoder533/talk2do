@@ -7,16 +7,9 @@ const talkBtn = document.getElementById("mainMic");
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const instructionsMic = document.getElementById("instructions");
 
-// page load
 window.addEventListener("load", () => {
-    //add constraints object
     const constraints = { audio: true, video: false };
-    //call get user media
-    navigator.mediaDevices.getUserMedia(constraints).then(function (mediaStream){
-        //checker.value = "you let me use your mic!";
-    }).catch(function (err) {
-        //checker.value = "mic access denied";
-    })
+    navigator.mediaDevices.getUserMedia(constraints);
     getTodosFromLocalStorage();
 });
 
@@ -89,13 +82,11 @@ function searchForKeyword(message) {
     let keyword = arr.shift();
     let result = arr.join(" ");
 
-    //add
     if (keyword === "add") {
         addToLocalStorage(result);
         renderTodo(result);
     }
 
-    //edit
     else if (keyword === "edit") {
         editTodo(result);
     }
@@ -104,12 +95,10 @@ function searchForKeyword(message) {
         undoCompletion(result);
     }
 
-    //delete
     else if (keyword === "delete") {
         deleteTodo(result);
     }
 
-    //complete
     else if (keyword === "complete") {
         replaceInLocalStorage(result, `${result}-complete`);
         completeTodo(result);
@@ -191,8 +180,6 @@ function editTodo(text) {
     });
 }
 
-
-
 function undoCompletion(text) {
     const parent = document.querySelectorAll(".todos__info");
     parent.forEach(element => {
@@ -216,7 +203,6 @@ function undoAllTodos() {
 }
 
 toggleBtn.addEventListener("click", () => {
-    //check if local storage contains dark mode already, if so dont add it again
     document.body.classList.toggle("dark");
     const instructions = document.querySelector(".instructions");
     instructions.classList.add("dark");
@@ -234,7 +220,6 @@ toggleBtn.addEventListener("click", () => {
     });
 });
 
-// create elements
 function createElementWithClass(type, className) {
     const element = document.createElement(type);
     element.classList.add(className);
@@ -267,7 +252,6 @@ function createElementWithThreeAttributes(type, className, attr1, attrName1, att
 function renderTodo(input) {
     const todosContainer = document.querySelector(".todos__list");
     const todosItem = createElementWithClass("div", "todos__item");
-    //check for dark mode
     if (document.body.classList.contains("dark")) {
         todosItem.classList.add("dark");
     }
@@ -282,8 +266,6 @@ function renderTodo(input) {
     return todosContainer;
 }
 
-
-//get all todo elements
 function setDarkModeToAllTodos(status) {
     const allTodos = document.querySelectorAll(".todos__item");
     if (status === "remove") {
@@ -298,7 +280,6 @@ function setDarkModeToAllTodos(status) {
     }
 }
 
-//add to local storage
 function addToLocalStorage(todo) {
     let todos;
     if (localStorage.getItem("todos") === null) {
@@ -378,18 +359,3 @@ function replaceInLocalStorage(oldTodo, newTodo) {
     });
     localStorage.setItem("todos", JSON.stringify(todos));
 }
-
-// function checkLocalStorageForDarkMode(status) {
-//     let todos;
-//     if (localStorage.getItem("todos") === null) {
-//         todos = [];
-//     }
-//     else {
-//         todos = JSON.parse(localStorage.getItem("todos"));
-//     }
-//     todos.forEach((element, index) => {
-//         if (element === status) {
-//             return true;
-//         }
-//     });
-// }
