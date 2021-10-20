@@ -89,6 +89,10 @@ body.dark {
     transform: translateX(25px);
 }
 
+.sr-only {
+    
+}
+
 .talk {
     font-size: 3rem;
     border-radius: 50%;
