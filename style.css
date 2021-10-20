@@ -199,6 +199,7 @@ body.dark {
 
 .todos__text.complete {
     text-decoration: line-through;
+    text-decoration-color: green;
     transition: all 1.5s ease-in-out;
     opacity: 0.3;
 }
