@@ -206,6 +206,7 @@ function undoAllTodos() {
 }
 
 toggleBtn.addEventListener("click", () => {
+    addToLocalStorage("dark mode on");
     document.body.classList.toggle("dark");
     const instructions = document.querySelector(".instructions");
     instructions.classList.add("dark");
@@ -220,7 +221,7 @@ toggleBtn.addEventListener("click", () => {
     const allTodos = document.querySelectorAll(".todos__item");
     allTodos.forEach(item => {
         item.classList.toggle("dark");
-    })
+    });
 });
 
 // create elements
@@ -309,7 +310,12 @@ function getTodosFromLocalStorage() {
         todos = JSON.parse(localStorage.getItem("todos"));
     }
     todos.forEach(item => {
-        renderTodo(item);
+        if (item === "dark mode on" && !document.body.classList.contains("dark")) {
+            toggleBtn.click();
+        }
+        else {
+            renderTodo(item);
+        }
     });
 }
 
