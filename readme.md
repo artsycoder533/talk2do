@@ -14,7 +14,7 @@
 
 ## Overview
 
-Talk2Do is a single page notes application that allows a user to operate its functionality without typing by utilizing the Web Speech API.  For added convenience, the notes are saved to local storage ia the Web Storage API. Since the Web Speech API is still in its experimental phase, there is limited browser compability.  Users with iPhones are unable to use this application at this time.
+Talk2Do is a single page notes application that allows a user to operate its functionality without typing by utilizing the Web Speech API.  For added convenience, the notes are saved to local storage via the Web Storage API. Since the Web Speech API is still in its experimental phase, there is limited browser compability.  Users with iPhones are unable to use this application at this time.
 
 ### Screenshots
 
