@@ -109,7 +109,6 @@ function searchForKeyword(message) {
     else if (keyword === "complete") {
         replaceInLocalStorage(result, `${result}-complete`);
         completeTodo(result);
-        
     }
 }
 
@@ -118,6 +117,8 @@ function completeAllTodo() {
     parent.forEach(element => {
         element.children[0].classList.add("complete");
         element.previousElementSibling.classList.add("visible");
+        let placeholder = element.children[0].textContent;
+        replaceInLocalStorage(placeholder, `${placeholder}-complete`);
     });
 }
 
@@ -194,6 +195,7 @@ function undoCompletion(text) {
         if (element.children[0].textContent === text && element.children[0].classList.contains("complete")) {
             element.children[0].classList.remove("complete");
             element.previousElementSibling.classList.remove("visible");
+            replaceInLocalStorage(`${text}-complete`, text);
         }
     });
 }
@@ -204,12 +206,16 @@ function undoAllTodos() {
         if (element.children[0].classList.contains("complete")) {
             element.children[0].classList.remove("complete");
             element.previousElementSibling.classList.remove("completed");
+            replaceInLocalStorage(`$`)
         }
     });
 }
 
 toggleBtn.addEventListener("click", () => {
-    addToLocalStorage("dark mode on");
+    //check if local storage contains dark mode already, if so dont add it again
+    if (!checkLocalStorageForDarkMode("dark mode on")) {
+        addToLocalStorage("dark mode on");
+    }
     document.body.classList.toggle("dark");
     const instructions = document.querySelector(".instructions");
     instructions.classList.add("dark");
@@ -367,4 +373,19 @@ function replaceInLocalStorage(oldTodo, newTodo) {
         }
     });
     localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function checkLocalStorageForDarkMode(status) {
+    let todos;
+    if (localStorage.getItem("todos") === null) {
+        todos = [];
+    }
+    else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
+    todos.forEach((element, index) => {
+        if (element === status) {
+            return true;
+        }
+    });
 }
