@@ -17,8 +17,10 @@ Talk2Do is a single page notes application that allows a user to operate its fun
 
 ### Screenshots
 
-- Desktop Screenshot: ![Desktop Screenshot](assets/images/vohps.png)
-- Mobile Screenshot: ![Mobile Screenshot](assets/images/vohps_mobile.png)
+- Instructions Screenshot: ![Desktop Screenshot](instructions.png)
+- Desktop Screenshot: ![Desktop Screenshot](desktop.png)
+- DarkMode Screenshot: ![Desktop Screenshot](desktop_dark.png)
+- Mobile Screenshot: ![Mobile Screenshot](.png)
 - LightHouse Score: ![Lighthouse Score]()
 
 ### Links
