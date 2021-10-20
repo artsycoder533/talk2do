@@ -329,6 +329,9 @@ function getTodosFromLocalStorage() {
             toggleBtn.click();
             break;
         }
+        else if (todos[i] === "dark mode off" || todos[i] === "dark mode on") {
+            break;
+        }
             
         else if (todos[i].includes("-complete")) {
             let sub = todos[i].slice(0, todos[i].indexOf("-"));
@@ -376,17 +379,17 @@ function replaceInLocalStorage(oldTodo, newTodo) {
     localStorage.setItem("todos", JSON.stringify(todos));
 }
 
-function checkLocalStorageForDarkMode(status) {
-    let todos;
-    if (localStorage.getItem("todos") === null) {
-        todos = [];
-    }
-    else {
-        todos = JSON.parse(localStorage.getItem("todos"));
-    }
-    todos.forEach((element, index) => {
-        if (element === status) {
-            return true;
-        }
-    });
-}
+// function checkLocalStorageForDarkMode(status) {
+//     let todos;
+//     if (localStorage.getItem("todos") === null) {
+//         todos = [];
+//     }
+//     else {
+//         todos = JSON.parse(localStorage.getItem("todos"));
+//     }
+//     todos.forEach((element, index) => {
+//         if (element === status) {
+//             return true;
+//         }
+//     });
+// }

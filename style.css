@@ -90,7 +90,7 @@ body.dark {
 }
 
 .sr-only {
-    
+
 }
 
 .talk {
@@ -251,7 +251,7 @@ body.dark {
     display: grid;
     place-items: center;
     background: rgba(0, 0, 0, 0.9);
-    transform: translateY(-100%);
+    transform: translateY(-120%);
 }
 
 .modal.dark {
@@ -327,5 +327,5 @@ body.dark {
 }
 
 .hide {
-    transform: translateY(-110%);
+    transform: translateY(-120%);
 }
