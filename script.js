@@ -217,7 +217,6 @@ function undoAllTodos() {
 
 toggleBtn.addEventListener("click", () => {
     //check if local storage contains dark mode already, if so dont add it again
-    
     document.body.classList.toggle("dark");
     const instructions = document.querySelector(".instructions");
     instructions.classList.add("dark");
