@@ -1,5 +1,6 @@
 # Talk2Do
 
+[![wakatime](https://wakatime.com/badge/user/598efa70-6943-48ce-b688-7687c79f4c4d/project/735950eb-d0ea-48f5-b265-936778f79e3b.svg)](https://wakatime.com/badge/user/598efa70-6943-48ce-b688-7687c79f4c4d/project/735950eb-d0ea-48f5-b265-936778f79e3b)
 ##  Table of contents
 
 - [Overview](#overview)
