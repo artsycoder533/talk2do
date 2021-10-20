@@ -107,8 +107,7 @@ function searchForKeyword(message) {
 
     //complete
     else if (keyword === "complete") {
-        removeFromLocalStorage(result);
-        addToLocalStorage(`${result}-complete`);
+        replaceInLocalStorage(result, `${result}-complete`);
         completeTodo(result);
         
     }
@@ -178,6 +177,7 @@ function editTodo(text) {
                 recognition.onresult = (e) => {
                     const message = e.results[0][0].transcript;
                     element.children[0].textContent = message;
+                    replaceInLocalStorage(text, message);
                     modal.classList.remove("show");
                     return;
                 }
@@ -312,19 +312,28 @@ function getTodosFromLocalStorage() {
     else {
         todos = JSON.parse(localStorage.getItem("todos"));
     }
-    todos.forEach(item => {
-        if (item === "dark mode on" && !document.body.classList.contains("dark")) {
+
+    for (let i = 0; i < todos.length; i++){
+        if (todos[i] === "dark mode on" && !document.body.classList.contains("dark")) {
             toggleBtn.click();
+            break;
         }
-        else if (item.includes("-complete")) {
-            let sub = item.slice(0, item.indexOf("-"));
+        else if (todos[i] === "dark mode off" && document.body.classList.contains("dark")) {
+            toggleBtn.click();
+            break;
+        }
+            
+        else if (todos[i].includes("-complete")) {
+            let sub = todos[i].slice(0, todos[i].indexOf("-"));
             renderTodo(sub);
             completeTodo(sub);
         }
+            
         else {
-            renderTodo(item);
+            console.log(todos[i]);
+            renderTodo(todos[i]);
         }
-    });
+    }
 }
 
 function removeFromLocalStorage(todo) {
@@ -339,6 +348,22 @@ function removeFromLocalStorage(todo) {
         console.log(element, todo);
         if (element === todo) {
             todos.splice(index, 1);
+        }
+    });
+    localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function replaceInLocalStorage(oldTodo, newTodo) {
+    let todos;
+    if (localStorage.getItem("todos") === null) {
+        todos = [];
+    }
+    else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
+    todos.forEach((element, index) => {
+        if (element === oldTodo) {
+            todos[index] = newTodo;
         }
     });
     localStorage.setItem("todos", JSON.stringify(todos));
