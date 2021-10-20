@@ -134,6 +134,7 @@ function deleteTodo(text) {
     parent.forEach(element => {
         if (element.children[0].textContent === text) {
             element.parentElement.classList.add("remove");
+            removeFromLocalStorage(element.children[0].textContent);
             setTimeout(() => {
                 element.parentElement.remove();
             }, 1000);
@@ -150,8 +151,8 @@ function deleteAllTodos() {
         setTimeout(() => {
             parent.removeChild(child);
         }, 1000);
-        
     });
+    localStorage.clear();
 }
 
 function editTodo(text) {
@@ -310,4 +311,21 @@ function getTodosFromLocalStorage() {
     todos.forEach(item => {
         renderTodo(item);
     });
+}
+
+function removeFromLocalStorage(todo) {
+    let todos;
+    if (localStorage.getItem("todos") === null) {
+        todos = [];
+    }
+    else {
+        todos = JSON.parse(localStorage.getItem("todos"));
+    }
+    todos.forEach((element, index) => {
+        console.log(element, todo);
+        if (element === todo) {
+            todos.splice(index, 1);
+        }
+    });
+    localStorage.setItem("todos", JSON.stringify(todos));
 }
