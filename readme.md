@@ -52,7 +52,7 @@ I learned how to incorporate the Web Speech API into my application and how to r
 
 ### Continued Development
 
-I would like to continue to add add to this application as the compatibility of the Web Speech API improves.  I found the Speechly API that is supposed to remedy the compatiblity issue, but the majority of the resources catered to React.  Once I learn React I would love to rebuild this application utilizing Speechly so that all mobile users can benefit from this application.  I would also like to dive deeper into SEO and accessbility.
+I would like to continue to add add to this application as the compatibility of the Web Speech API improves.  
 
 ## Author
 
