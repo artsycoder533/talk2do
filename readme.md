@@ -56,4 +56,4 @@ I would like to continue to add add to this application as the compatibility of 
 
 ## Author
 
-- Portfolio - [https://artsycoder533.github.io/portfolio/](https://artsycoder533.github.io/portfolio/)
+- Portfolio - [https://natashajohnson.dev/](https://natashajohnson.dev/)
